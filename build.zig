@@ -8,8 +8,9 @@ pub fn build(b: *std.Build) void {
         .target = target,
         .optimize = optimize,
     });
+    b.installArtifact(static_library);
 
-    static_library.installHeader("snappy.h", ".");
+    static_library.installHeader(.{ .path = "snappy.h" }, "snappy.h");
 
     static_library.addCSourceFiles(.{
         .files = &.{
@@ -18,5 +19,4 @@ pub fn build(b: *std.Build) void {
             "util.c",
         },
     });
-    b.installArtifact(static_library);
 }
