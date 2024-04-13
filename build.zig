@@ -8,7 +8,7 @@ pub fn build(b: *std.Build) void {
         .optimize = .ReleaseFast,
     });
 
-    static_library.installHeader("snappy.h", ".");
+    static_library.installHeader("snappy.h", "snappy.h");
 
     static_library.addCSourceFiles(.{
         .files = &.{
